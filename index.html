@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones - Arreglos - Objetos en JS</title>
+    <script src="js/funciones.js"></script>
+</head>
+<body>
+    <h1>Funciones - Arreglos - Objetos en JS</h1>
+    <script>
+        // Invocar la función cambioMoneda
+        //console.log(cambioMoneda(9400)) // Muestre por consola lo que retorna la función cambioMoneda
+        //let dolares = cambioMoneda(200000) // Asignar a la vble pesos lo que retorna la funcion cambioMoneda
+        //console.log(dolares);
+        //console.log(cambioMoneda(45000) >= 10 ? `Con USD ${cambioMoneda(47000)} puede almorzar... ` : `Le tocó mecatear...`)
+        //console.log(dolares >= 10 ? `Con USD ${parseInt(dolares)} puede almorzar... ` : `Le tocó mecatear...`)
+        let cambio = cambioMoneda("COP","USD",200000);
+        console.log(cambio.toFixed(1))
+        cambio = cambioMoneda("USD","COP",42.5533);
+        console.log(cambio.toFixed(0))
+        console.log(sumar(3,5))
+        let misuma = sumar1(56,44);
+        console.log(misuma)
+        // console.log(sexo(false))
+        // console.log(sexo1(false))
+        // Mostrar la info del objeto estudiante
+        console.log(estudiante)
+        // Mostrar el nombre del objeto estudiante
+        console.log(`Nombre del estudiante: ${estudiante.nombre}, su salario es: ${estudiante.salario}, el sexo es: ${estudiante.gender ? "Femenino" : "Masculino"} `)
+        // Desestructurar el objeto estudiante
+        const {identificacion, nombre, gender, salario} = estudiante // crear variables con el mismo nombre de cada key del objeto
+        console.log(`Identificación: ${identificacion}`)
+        // Mostrar la información del arreglo de objetos: users
+        console.log(users)
+        // Recorrer el arreglo de objetos
+        // for tradicional
+        // for (i = 0; i < users.length; i++){
+        //     console.log(users[i].username)
+        // }
+        // for como iterador
+        for (user of users){
+            console.log(user.username)
+        }
+        // con forEach
+        console.log("Recorrido con forEach")
+        users.forEach(user => console.log(`Contraseña: ${user.password}, usuario: ${user.username})`))
+        // con Map
+        console.log("Recorrido con map");
+        users.map(usr => console.log(`Usuario: ${usr.username} `))
+        users.map(myuser => {
+            if (myuser.password == "111"){
+                console.log("Contraseña encontrada ...")
+            }
+        })
+        console.log("Utilizando el metodo find ...")
+        // Buscar un dato en el arreglo users
+        let encontro = users.find( user => user.username == "pperez" && user.password == "111")
+        // encontro queda con los datos del objeto encontrado o con la palabra undefined, sino lo encontró
+        // if (encontro != undefined){ // Lo encontró
+        //     console.log(`El usuario es: ${encontro.username}`)
+        // }
+        // else{
+        //     console.log("Usuario no encontrado")
+        // }
+        console.log(encontro != undefined ? `Usuario ${encontro.username}`:`Usuario no encontrado`)    
+
+    </script>
+    
+</body>
+</html>
