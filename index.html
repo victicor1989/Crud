@@ -1,72 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funciones - Arreglos - Objetos en JS</title>
-    <script src="js/funciones.js"></script>
-</head>
-<body>
-    <h1>Funciones - Arreglos - Objetos en JS</h1>
-    <script>
-        // Invocar la función cambioMoneda
-        //console.log(cambioMoneda(9400)) // Muestre por consola lo que retorna la función cambioMoneda
-        //let dolares = cambioMoneda(200000) // Asignar a la vble pesos lo que retorna la funcion cambioMoneda
-        //console.log(dolares);
-        //console.log(cambioMoneda(45000) >= 10 ? `Con USD ${cambioMoneda(47000)} puede almorzar... ` : `Le tocó mecatear...`)
-        //console.log(dolares >= 10 ? `Con USD ${parseInt(dolares)} puede almorzar... ` : `Le tocó mecatear...`)
-        let cambio = cambioMoneda("COP","USD",200000);
-        console.log(cambio.toFixed(1))
-        cambio = cambioMoneda("USD","COP",42.5533);
-        console.log(cambio.toFixed(0))
-        console.log(sumar(3,5))
-        let misuma = sumar1(56,44);
-        console.log(misuma)
-        // console.log(sexo(false))
-        // console.log(sexo1(false))
-        // Mostrar la info del objeto estudiante
-        console.log(estudiante)
-        // Mostrar el nombre del objeto estudiante
-        console.log(`Nombre del estudiante: ${estudiante.nombre}, su salario es: ${estudiante.salario}, el sexo es: ${estudiante.gender ? "Femenino" : "Masculino"} `)
-        // Desestructurar el objeto estudiante
-        const {identificacion, nombre, gender, salario} = estudiante // crear variables con el mismo nombre de cada key del objeto
-        console.log(`Identificación: ${identificacion}`)
-        // Mostrar la información del arreglo de objetos: users
-        console.log(users)
-        // Recorrer el arreglo de objetos
-        // for tradicional
-        // for (i = 0; i < users.length; i++){
-        //     console.log(users[i].username)
-        // }
-        // for como iterador
-        for (user of users){
-            console.log(user.username)
-        }
-        // con forEach
-        console.log("Recorrido con forEach")
-        users.forEach(user => console.log(`Contraseña: ${user.password}, usuario: ${user.username})`))
-        // con Map
-        console.log("Recorrido con map");
-        users.map(usr => console.log(`Usuario: ${usr.username} `))
-        users.map(myuser => {
-            if (myuser.password == "111"){
-                console.log("Contraseña encontrada ...")
-            }
-        })
-        console.log("Utilizando el metodo find ...")
-        // Buscar un dato en el arreglo users
-        let encontro = users.find( user => user.username == "pperez" && user.password == "111")
-        // encontro queda con los datos del objeto encontrado o con la palabra undefined, sino lo encontró
-        // if (encontro != undefined){ // Lo encontró
-        //     console.log(`El usuario es: ${encontro.username}`)
-        // }
-        // else{
-        //     console.log("Usuario no encontrado")
-        // }
-        console.log(encontro != undefined ? `Usuario ${encontro.username}`:`Usuario no encontrado`)    
 
-    </script>
-    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>CRUD de productos con arreglo de Objetos</h1>
+        <div class="alert d-none" role="alert" id="mensaje">
+
+        </div>
+        <form>
+            <div class="mb-3">
+                <label for="referencia">Referencia</label>
+                <input type="text" class="form-control" id="referencia" name="referencia"
+                    placeholder="Ingrese la referencia">
+            </div>
+            <div class="mb-3">
+                <label for="descripcion">Descripción</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion"
+                    placeholder="Ingrese la descripcion">
+            </div>
+            <div class="mb-3">
+                <label for="preciounitario">Precio Unitario</label>
+                <input type="text" class="form-control" id="preciounitario" name="preciounitario"
+                    placeholder="Ingrese precio unitario">
+            </div>
+            <div class="mb-3">
+                <label for="existencia">Existencia</label>
+                <input type="text" class="form-control" id="existencia" name="existencia"
+                    placeholder="Ingrese la existencia">
+            </div>
+            <button type="button" class="btn btn-primary" id="btnagregar">Agregar</button>
+            <button type="button" class="btn btn-secondary" id="btnbuscar">Buscar</button>
+            <button type="button" class="btn btn-success" id="btnactualizar">Actualizar</button>
+            <button type="button" class="btn btn-danger" id="btneliminar">Eliminar</button>
+            <button type="button" class="btn btn-warning" id="btnlistar">Listar</button>
+            <button type="button" class="btn btn-dark" id="btnlimpiar">Limpiar</button>
+        </form>
+        <div id="listado"></div>
+    </div>
+
+    <script src="js/productos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
